@@ -3,6 +3,7 @@
 import { UserButton, useAuth } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { LogOut } from "lucide-react";
+import {PiUserSwitch} from "react-icons/pi"
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -35,8 +36,8 @@ export const NavbarRoutes = () => {
           </Link>
         ) : isTeacher(userId) ? (
           <Link href="/teacher/courses">
-            <Button size="sm" variant="ghost">
-              Tutor mode
+            <Button size="sm" variant="ghost" className="flex gap-x-2">
+              Tutor mode <PiUserSwitch size={20} className=""/>
             </Button>
           </Link>
         ) : null}
