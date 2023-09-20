@@ -52,7 +52,18 @@ export async function POST(req: Request, { params }: { params: { courseId: strin
       });
     }
 
-    return NextResponse.json({ url: stripeCustomer.stripeCustomerId });
+    const addPurchase = await db.purchase.create({
+      data: {
+        userId: user.id,
+        courseId: params.courseId,
+      },
+    });
+
+    if (addPurchase.courseId) {
+      return NextResponse.json({ purchased: true });
+    } else {
+      return NextResponse.json({ purchased: false });
+    }
   } catch (error) {
     console.log("[COURSE_ID_CHECKOUT]", error);
     return new NextResponse("Internal Error", { status: 500 });
