@@ -1,12 +1,3 @@
-import Image from "next/image";
-
 export const Logo = () => {
-  return (
-    <Image
-      height={130}
-      width={130}
-      alt="logo"
-      src="/logo.svg"
-    />
-  )
-}
+  return <h1 className="text-2xl font-bold">Elimuhub</h1>;
+};
